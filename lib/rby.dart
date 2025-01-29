@@ -1,4 +1,4 @@
-library;
+library rby;
 
 // export 'animations/immediate/immediate_animation.dart';
 // export 'animations/immediate/immediate_opacity_animation.dart';
