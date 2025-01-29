@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:rby/rby.dart';
+import 'package:rby/theme/rby_toolbar_theme.dart';
+
+import 'gap.dart';
 
 class RbyToolbar extends StatelessWidget {
   const RbyToolbar({

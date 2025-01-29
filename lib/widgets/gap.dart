@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart' as gap;
-import 'package:rby/rby.dart';
+import 'package:rby/theme/spacing_scheme.dart';
 
 enum _GapSize {
   custom,

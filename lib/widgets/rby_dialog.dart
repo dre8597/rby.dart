@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rby/rby.dart';
+import 'package:rby/theme/spacing_scheme.dart';
 
 class RbyDialog extends StatelessWidget {
   const RbyDialog({

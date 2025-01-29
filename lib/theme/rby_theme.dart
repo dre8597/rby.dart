@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rby/rby.dart';
+import 'package:rby/theme/radius_scheme.dart';
+import 'package:rby/theme/rby_toolbar_theme.dart';
+import 'package:rby/theme/spacing_scheme.dart';
 
 @immutable
 class RbyTheme {
@@ -43,7 +45,7 @@ class RbyTheme {
         ),
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(radiusScheme.large),
-          borderSide: BorderSide(color: colorScheme.onSurface.withOpacity(.12)),
+          borderSide: BorderSide(color: colorScheme.onSurface.withAlpha(31)),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(radiusScheme.large),

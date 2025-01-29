@@ -2,7 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:rby/rby.dart';
+import 'package:rby/misc/target_platform_utils.dart';
+import 'package:rby/theme/spacing_scheme.dart';
+import 'package:rby/widgets/rby_toolbar.dart';
 
 extension RbyToolbarThemeExtension on ThemeData {
   RbyToolbarTheme get toolbarTheme => extension<RbyToolbarTheme>()!;
@@ -39,15 +41,15 @@ class RbyToolbarTheme extends ThemeExtension<RbyToolbarTheme> {
         openDrawerIcon = Icons.menu_rounded,
         decoration = null,
         sliverDecoration = BoxDecoration(
-          color: colorScheme.surface.withOpacity(.9),
+          color: colorScheme.surface.withAlpha(229),
           border: Border(
             bottom: BorderSide(
-              color: colorScheme.outlineVariant.withOpacity(0),
+              color: colorScheme.outlineVariant.withAlpha(0),
             ),
           ),
         ),
         sliverOverscrollDecoration = BoxDecoration(
-          color: colorScheme.surface.withOpacity(.9),
+          color: colorScheme.surface.withAlpha(229),
           border: Border(
             bottom: BorderSide(
               color: colorScheme.outlineVariant,
