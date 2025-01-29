@@ -1,6 +1,6 @@
 name: rby
 description: An opinionated widgets & utilities library
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/robertodoering/rby.dart
 publish: none
 
@@ -17,6 +17,7 @@ dependencies:
   logging: ^1.2.0
   modal_bottom_sheet: ^3.0.0
   shared_preferences: ^2.4.0
+  sliver_tools: ^0.2.12
 
 dev_dependencies:
   flutter_test:
