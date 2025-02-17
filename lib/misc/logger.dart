@@ -9,9 +9,7 @@ mixin LoggerMixin {
   Logger get log => Logger('$runtimeType');
 }
 
-void initializeLogger({
-  Level level = Level.ALL,
-}) {
+void initializeLogger({Level level = Level.ALL}) {
   Logger.root.level = level;
   Logger.root.onRecord.listen(_printRecord);
 }
@@ -21,11 +19,12 @@ void _printRecord(LogRecord record) {
   final error = record.error;
   final stackTrace = record.stackTrace;
 
-  final buffer = StringBuffer()
-    ..write('[')
-    ..write(DateFormat('HH:mm:s.S').format(DateTime.now()))
-    ..write(' | ')
-    ..write(record.level.name.padRight(7));
+  final buffer =
+      StringBuffer()
+        ..write('[')
+        ..write(DateFormat('HH:mm:s.S').format(DateTime.now()))
+        ..write(' | ')
+        ..write(record.level.name.padRight(7));
 
   if (record.loggerName.isNotEmpty) {
     buffer
@@ -47,9 +46,10 @@ void _printRecord(LogRecord record) {
 }
 
 void _printError(Object error, StackTrace? stackTrace) {
-  final buffer = StringBuffer()
-    ..write('[ERROR]')
-    ..write('\n');
+  final buffer =
+      StringBuffer()
+        ..write('[ERROR]')
+        ..write('\n');
 
   if (error is Response) {
     buffer
@@ -63,10 +63,11 @@ void _printError(Object error, StackTrace? stackTrace) {
   _colorize('$buffer', '\x1B[31m');
 
   if (stackTrace != null) {
-    final buffer = StringBuffer()
-      ..write('[STACKTRACE]')
-      ..write('\n')
-      ..write(stackTrace);
+    final buffer =
+        StringBuffer()
+          ..write('[STACKTRACE]')
+          ..write('\n')
+          ..write(stackTrace);
 
     _colorize('$buffer', '\x1B[2;31m');
   }

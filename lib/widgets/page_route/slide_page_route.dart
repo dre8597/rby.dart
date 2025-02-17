@@ -51,16 +51,16 @@ class SlidePageRoute<T> extends PageRoute<T> {
   ) {
     return fullscreenDialog
         ? CupertinoFullscreenDialogTransition(
-            primaryRouteAnimation: animation,
-            secondaryRouteAnimation: secondaryAnimation,
-            linearTransition: false,
-            child: child,
-          )
+          primaryRouteAnimation: animation,
+          secondaryRouteAnimation: secondaryAnimation,
+          linearTransition: false,
+          child: child,
+        )
         : CupertinoPageTransition(
-            primaryRouteAnimation: animation,
-            secondaryRouteAnimation: secondaryAnimation,
-            linearTransition: false,
-            child: child,
-          );
+          primaryRouteAnimation: animation,
+          secondaryRouteAnimation: secondaryAnimation,
+          linearTransition: false,
+          child: child,
+        );
   }
 }

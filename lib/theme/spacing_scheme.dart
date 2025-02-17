@@ -19,13 +19,13 @@ class SpacingScheme extends ThemeExtension<SpacingScheme> {
   });
 
   const SpacingScheme.fallback()
-      : xxs = 2,
-        xs = 4,
-        s = 6,
-        m = 8,
-        l = 12,
-        xl = 16,
-        xxl = 24;
+    : xxs = 2,
+      xs = 4,
+      s = 6,
+      m = 8,
+      l = 12,
+      xl = 16,
+      xxl = 24;
 
   final double xxs;
   final double xs;
@@ -57,10 +57,7 @@ class SpacingScheme extends ThemeExtension<SpacingScheme> {
   }
 
   @override
-  ThemeExtension<SpacingScheme> lerp(
-    covariant SpacingScheme? other,
-    double t,
-  ) {
+  ThemeExtension<SpacingScheme> lerp(covariant SpacingScheme? other, double t) {
     return SpacingScheme(
       xxs: lerpDouble(xxs, other?.xxs ?? xxs, t)!,
       xs: lerpDouble(xs, other?.xs ?? xs, t)!,

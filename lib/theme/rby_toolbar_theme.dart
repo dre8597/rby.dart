@@ -28,35 +28,29 @@ class RbyToolbarTheme extends ThemeExtension<RbyToolbarTheme> {
   });
 
   RbyToolbarTheme.fallback(ColorScheme colorScheme, SpacingScheme spacingScheme)
-      : height = defaultTargetPlatform.isDesktop ? 40 : 56,
-        padding = EdgeInsets.symmetric(horizontal: spacingScheme.m),
-        middleSpacing = spacingScheme.m,
-        buttonStyle = TextButton.styleFrom(
-          padding: EdgeInsets.all(spacingScheme.m),
-          foregroundColor: colorScheme.onSurface,
+    : height = defaultTargetPlatform.isDesktop ? 40 : 56,
+      padding = EdgeInsets.symmetric(horizontal: spacingScheme.m),
+      middleSpacing = spacingScheme.m,
+      buttonStyle = TextButton.styleFrom(
+        padding: EdgeInsets.all(spacingScheme.m),
+        foregroundColor: colorScheme.onSurface,
+      ),
+      automaticallyImplyLeading = true,
+      backIcon = Icons.arrow_back_rounded,
+      closeIcon = Icons.close_rounded,
+      openDrawerIcon = Icons.menu_rounded,
+      decoration = null,
+      sliverDecoration = BoxDecoration(
+        color: colorScheme.surface.withAlpha(229),
+        border: Border(
+          bottom: BorderSide(color: colorScheme.outlineVariant.withAlpha(0)),
         ),
-        automaticallyImplyLeading = true,
-        backIcon = Icons.arrow_back_rounded,
-        closeIcon = Icons.close_rounded,
-        openDrawerIcon = Icons.menu_rounded,
-        decoration = null,
-        sliverDecoration = BoxDecoration(
-          color: colorScheme.surface.withAlpha(229),
-          border: Border(
-            bottom: BorderSide(
-              color: colorScheme.outlineVariant.withAlpha(0),
-            ),
-          ),
-        ),
-        sliverOverscrollDecoration = BoxDecoration(
-          color: colorScheme.surface.withAlpha(229),
-          border: Border(
-            bottom: BorderSide(
-              color: colorScheme.outlineVariant,
-            ),
-          ),
-        ),
-        sliverBackdropFilter = ImageFilter.blur(sigmaX: 36, sigmaY: 36);
+      ),
+      sliverOverscrollDecoration = BoxDecoration(
+        color: colorScheme.surface.withAlpha(229),
+        border: Border(bottom: BorderSide(color: colorScheme.outlineVariant)),
+      ),
+      sliverBackdropFilter = ImageFilter.blur(sigmaX: 36, sigmaY: 36);
 
   final double height;
   final EdgeInsets padding;
@@ -130,11 +124,8 @@ class RbyToolbarTheme extends ThemeExtension<RbyToolbarTheme> {
     return RbyToolbarTheme(
       height: lerpDouble(height, other?.height ?? height, t)!,
       padding: EdgeInsets.lerp(padding, other?.padding ?? padding, t)!,
-      middleSpacing: lerpDouble(
-        middleSpacing,
-        other?.middleSpacing ?? middleSpacing,
-        t,
-      )!,
+      middleSpacing:
+          lerpDouble(middleSpacing, other?.middleSpacing ?? middleSpacing, t)!,
       buttonStyle: ButtonStyle.lerp(buttonStyle, other?.buttonStyle, t),
       automaticallyImplyLeading:
           other?.automaticallyImplyLeading ?? automaticallyImplyLeading,

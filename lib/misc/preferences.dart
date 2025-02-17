@@ -62,8 +62,8 @@ class _BasicPreferences extends Preferences {
   const _BasicPreferences({
     required SharedPreferences sharedPreferences,
     String? prefix,
-  })  : _sharedPreferences = sharedPreferences,
-        _prefix = prefix;
+  }) : _sharedPreferences = sharedPreferences,
+       _prefix = prefix;
 
   @override
   final SharedPreferences _sharedPreferences;
@@ -117,9 +117,9 @@ class _EncryptedPreferences extends Preferences with LoggerMixin {
     required SharedPreferences sharedPreferences,
     required String aesKey,
     String? prefix,
-  })  : _sharedPreferences = sharedPreferences,
-        _prefix = prefix,
-        _encrypter = Encrypter(AES(Key.fromBase64(aesKey)));
+  }) : _sharedPreferences = sharedPreferences,
+       _prefix = prefix,
+       _encrypter = Encrypter(AES(Key.fromBase64(aesKey)));
 
   final Encrypter _encrypter;
 

@@ -20,18 +20,16 @@ Future<T?> showRbyBottomSheet<T>(
         topRight: theme.shape.radius,
       ),
     ),
-    builder: (context) => SafeArea(
-      top: false,
-      child: SingleChildScrollView(
-        controller: ModalScrollController.of(context),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const BottomSheetHandle(),
-            ...children,
-          ],
+    builder:
+        (context) => SafeArea(
+          top: false,
+          child: SingleChildScrollView(
+            controller: ModalScrollController.of(context),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [const BottomSheetHandle(), ...children],
+            ),
+          ),
         ),
-      ),
-    ),
   );
 }

@@ -35,11 +35,13 @@ class _AnimatedTranslateState
 
   @override
   void forEachTween(TweenVisitor<dynamic> visitor) {
-    _matrix = visitor(
-      _matrix,
-      widget.transform,
-      (value) => Matrix4Tween(begin: value as Matrix4),
-    ) as Matrix4Tween?;
+    _matrix =
+        visitor(
+              _matrix,
+              widget.transform,
+              (value) => Matrix4Tween(begin: value as Matrix4),
+            )
+            as Matrix4Tween?;
   }
 
   @override
@@ -51,10 +53,11 @@ class _AnimatedTranslateState
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _transformAnimation,
-      builder: (_, __) => Transform(
-        transform: _transformAnimation.value,
-        child: widget.child,
-      ),
+      builder:
+          (_, __) => Transform(
+            transform: _transformAnimation.value,
+            child: widget.child,
+          ),
     );
   }
 }

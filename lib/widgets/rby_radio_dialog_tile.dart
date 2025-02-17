@@ -34,29 +34,31 @@ class RbyRadioDialogTile<T> extends StatelessWidget {
       subtitle: entries[groupValue],
       multilineTitle: true,
       borderRadius: borderRadius,
-      onTap: () => showDialog<void>(
-        context: context,
-        builder: (context) => RbyDialog(
-          title: dialogTitle,
-          contentPadding: theme.spacing.only(top: true),
-          clipBehavior: Clip.antiAlias,
-          content: Column(
-            children: [
-              for (final entry in entries.entries)
-                RbyRadioTile<T>(
-                  title: entry.value,
-                  value: entry.key,
-                  groupValue: groupValue,
-                  onChanged: (value) {
-                    HapticFeedback.lightImpact();
-                    Navigator.of(context).pop();
-                    if (value != groupValue) onChanged?.call(value);
-                  },
+      onTap:
+          () => showDialog<void>(
+            context: context,
+            builder:
+                (context) => RbyDialog(
+                  title: dialogTitle,
+                  contentPadding: theme.spacing.only(top: true),
+                  clipBehavior: Clip.antiAlias,
+                  content: Column(
+                    children: [
+                      for (final entry in entries.entries)
+                        RbyRadioTile<T>(
+                          title: entry.value,
+                          value: entry.key,
+                          groupValue: groupValue,
+                          onChanged: (value) {
+                            HapticFeedback.lightImpact();
+                            Navigator.of(context).pop();
+                            if (value != groupValue) onChanged?.call(value);
+                          },
+                        ),
+                    ],
+                  ),
                 ),
-            ],
           ),
-        ),
-      ),
     );
   }
 }

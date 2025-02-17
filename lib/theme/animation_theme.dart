@@ -2,10 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class RbyAnimationTheme extends ThemeExtension<RbyAnimationTheme> {
-  const RbyAnimationTheme({
-    required this.short,
-    required this.long,
-  });
+  const RbyAnimationTheme({required this.short, required this.long});
 
   final Duration short;
   final Duration long;

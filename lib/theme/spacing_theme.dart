@@ -4,12 +4,9 @@ import 'package:flutter/material.dart';
 
 /// Contains spacing values that are used throughout the library.
 class RbySpacingTheme extends ThemeExtension<RbySpacingTheme> {
-  const RbySpacingTheme({
-    required this.base,
-    double? small,
-    double? large,
-  })  : small = small ?? base / 2,
-        large = large ?? base * 2;
+  const RbySpacingTheme({required this.base, double? small, double? large})
+    : small = small ?? base / 2,
+      large = large ?? base * 2;
 
   final double small;
   final double base;
@@ -48,11 +45,7 @@ class RbySpacingTheme extends ThemeExtension<RbySpacingTheme> {
   }
 
   @override
-  RbySpacingTheme copyWith({
-    double? small,
-    double? base,
-    double? large,
-  }) {
+  RbySpacingTheme copyWith({double? small, double? base, double? large}) {
     return RbySpacingTheme(
       small: small ?? this.small,
       base: base ?? this.base,

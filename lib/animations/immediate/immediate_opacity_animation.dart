@@ -15,7 +15,7 @@ class ImmediateOpacityAnimation extends ImmediateImplicitAnimation<double> {
 
   @override
   ImmediateImplictAnimationState<ImmediateOpacityAnimation, double>
-      createState() => _ImmediateOpacityAnimationState();
+  createState() => _ImmediateOpacityAnimationState();
 }
 
 class _ImmediateOpacityAnimationState

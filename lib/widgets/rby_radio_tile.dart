@@ -36,27 +36,30 @@ class RbyRadioTile<T> extends StatelessWidget {
       leading: Radio<T>(
         value: value,
         groupValue: groupValue,
-        onChanged: onChanged == null
-            ? null
-            : (value) {
-                if (value != null) {
-                  HapticFeedback.lightImpact();
-                  onChanged?.call(value);
-                }
-              },
+        onChanged:
+            onChanged == null
+                ? null
+                : (value) {
+                  if (value != null) {
+                    HapticFeedback.lightImpact();
+                    onChanged?.call(value);
+                  }
+                },
       ),
       title: title,
       subtitle: subtitle,
-      onTap: onChanged != null
-          ? () {
-              HapticFeedback.lightImpact();
-              onChanged?.call(value);
-            }
-          : null,
+      onTap:
+          onChanged != null
+              ? () {
+                HapticFeedback.lightImpact();
+                onChanged?.call(value);
+              }
+              : null,
       enabled: onChanged != null,
       multilineTitle: true,
       contentPadding: contentPadding,
-      leadingPadding: leadingPadding ??
+      leadingPadding:
+          leadingPadding ??
           EdgeInsets.all(radioPadding.clamp(0, theme.spacing.base)),
       trailingPadding: trailingPadding,
     );

@@ -57,17 +57,20 @@ class _AnimatedNumberState extends State<AnimatedNumber>
       vsync: this,
     );
 
-    _oldSlideAnimation = Tween(begin: Offset.zero, end: const Offset(0, 1))
-        .chain(CurveTween(curve: Curves.easeInOut))
-        .animate(_controller!);
+    _oldSlideAnimation = Tween(
+      begin: Offset.zero,
+      end: const Offset(0, 1),
+    ).chain(CurveTween(curve: Curves.easeInOut)).animate(_controller!);
 
-    _newSlideAnimation = Tween(begin: const Offset(0, -1), end: Offset.zero)
-        .chain(CurveTween(curve: Curves.easeInOut))
-        .animate(_controller!);
+    _newSlideAnimation = Tween(
+      begin: const Offset(0, -1),
+      end: Offset.zero,
+    ).chain(CurveTween(curve: Curves.easeInOut)).animate(_controller!);
 
-    _opacityAnimation = Tween<double>(begin: 1, end: 0)
-        .chain(CurveTween(curve: Curves.easeOut))
-        .animate(_controller!);
+    _opacityAnimation = Tween<double>(
+      begin: 1,
+      end: 0,
+    ).chain(CurveTween(curve: Curves.easeOut)).animate(_controller!);
   }
 
   @override
@@ -97,7 +100,8 @@ class _AnimatedNumberState extends State<AnimatedNumber>
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final style = widget.style ??
+    final style =
+        widget.style ??
         DefaultTextStyle.of(context).style.copyWith(
           // monospace to prevent width changes
           fontFeatures: const [FontFeature.tabularFigures()],
@@ -118,16 +122,10 @@ class _AnimatedNumberState extends State<AnimatedNumber>
     final unchanged = _newNumberStr.substring(0, changedIndex);
 
     // the old text that should animate out
-    final oldText = _oldNumberStr.substring(
-      changedIndex,
-      _oldNumberStr.length,
-    );
+    final oldText = _oldNumberStr.substring(changedIndex, _oldNumberStr.length);
 
     // the new text that should animate in
-    final newText = _newNumberStr.substring(
-      changedIndex,
-      _newNumberStr.length,
-    );
+    final newText = _newNumberStr.substring(changedIndex, _newNumberStr.length);
 
     return ClipRect(
       child: AnimatedSize(
@@ -139,36 +137,36 @@ class _AnimatedNumberState extends State<AnimatedNumber>
             _newSlideAnimation,
             _opacityAnimation,
           ]),
-          builder: (_, __) => Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                unchanged,
-                style: style,
-              ),
-              Stack(
-                fit: StackFit.passthrough,
+          builder:
+              (_, __) => Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  FractionalTranslation(
-                    translation: _oldNumber > widget.number
-                        ? _newSlideAnimation.value
-                        : -_newSlideAnimation.value,
-                    child: Text(newText, style: style),
-                  ),
-                  Opacity(
-                    opacity: _opacityAnimation.value,
-                    child: FractionalTranslation(
-                      translation: _oldNumber > widget.number
-                          ? _oldSlideAnimation.value
-                          : -_oldSlideAnimation.value,
-                      child: Text(oldText, style: style),
-                    ),
+                  Text(unchanged, style: style),
+                  Stack(
+                    fit: StackFit.passthrough,
+                    children: [
+                      FractionalTranslation(
+                        translation:
+                            _oldNumber > widget.number
+                                ? _newSlideAnimation.value
+                                : -_newSlideAnimation.value,
+                        child: Text(newText, style: style),
+                      ),
+                      Opacity(
+                        opacity: _opacityAnimation.value,
+                        child: FractionalTranslation(
+                          translation:
+                              _oldNumber > widget.number
+                                  ? _oldSlideAnimation.value
+                                  : -_oldSlideAnimation.value,
+                          child: Text(oldText, style: style),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
-          ),
         ),
       ),
     );

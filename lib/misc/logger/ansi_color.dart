@@ -2,18 +2,11 @@
 ///
 /// This class handles colorizing of terminal output.
 class AnsiColor {
-  AnsiColor.none()
-      : fg = null,
-        bg = null,
-        color = false;
+  AnsiColor.none() : fg = null, bg = null, color = false;
 
-  AnsiColor.fg(this.fg)
-      : bg = null,
-        color = true;
+  AnsiColor.fg(this.fg) : bg = null, color = true;
 
-  AnsiColor.bg(this.bg)
-      : fg = null,
-        color = true;
+  AnsiColor.bg(this.bg) : fg = null, color = true;
 
   /// ANSI Control Sequence Introducer, signals the terminal for new settings.
   static const ansiEsc = '\x1B[';

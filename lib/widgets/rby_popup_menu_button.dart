@@ -44,11 +44,9 @@ class _RbyPopupMenuButtonState<T> extends State<RbyPopupMenuButton<T>> {
     final items = widget.itemBuilder(context);
 
     if (items.isNotEmpty) {
-      showRbyMenu(
-        context: context,
-        items: items,
-        position: position,
-      ).then((newValue) {
+      showRbyMenu(context: context, items: items, position: position).then((
+        newValue,
+      ) {
         if (!mounted) return;
 
         if (newValue == null) {
@@ -120,10 +118,8 @@ class _RbyPopupMenuListTileState<T, W extends RbyPopupMenuListTile<T>>
 }
 
 class RbyPopupMenuRow<T> extends PopupMenuEntry<T> {
-  const RbyPopupMenuRow({
-    super.key,
-    required this.children,
-  }) : assert(children.length <= 4);
+  const RbyPopupMenuRow({super.key, required this.children})
+    : assert(children.length <= 4);
 
   final List<RbyPopupMenuIcon<T>> children;
 

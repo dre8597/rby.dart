@@ -15,7 +15,7 @@ class ImmediateScaleAnimation extends ImmediateImplicitAnimation<double> {
 
   @override
   ImmediateImplictAnimationState<ImmediateImplicitAnimation<double>, double>
-      createState() => _ImmediateScaleAnimationState();
+  createState() => _ImmediateScaleAnimationState();
 }
 
 class _ImmediateScaleAnimationState

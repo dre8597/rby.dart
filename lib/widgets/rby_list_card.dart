@@ -41,13 +41,16 @@ class RbyListCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final color = this.color ?? theme.cardTheme.color;
+    // Use card color from theme if none provided, fallback to surface color
+    final backgroundColor =
+        this.color ?? theme.cardTheme.color ?? theme.colorScheme.surface;
 
     return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: theme.shape.borderRadius,
         border: border,
-        color: enabled ? color : color?.withAlpha(128),
+        // Ensure we always have a non-transparent background for contrast
+        color: enabled ? backgroundColor : backgroundColor.withAlpha(128),
       ),
       child: RbyListTile(
         title: title,
@@ -55,7 +58,7 @@ class RbyListCard extends StatelessWidget {
         leading: leading,
         trailing: trailing,
         borderRadius: theme.shape.borderRadius,
-        color: color,
+        color: backgroundColor,
         onTap: onTap,
         enabled: enabled,
         contentPadding: contentPadding,

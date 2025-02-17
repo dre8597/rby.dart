@@ -41,8 +41,23 @@ class RbyListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final textStyle = theme.textTheme.titleSmall ?? const TextStyle();
-    final onBackground = theme.colorScheme.onSurface;
+    final titleStyle = (theme.textTheme.titleMedium ?? const TextStyle())
+        .copyWith(
+          height: multilineTitle ? null : 1,
+          color:
+              enabled
+                  ? theme.colorScheme.onSurface
+                  : theme.colorScheme.onSurface.withAlpha(128),
+        );
+
+    final subtitleStyle = (theme.textTheme.bodyMedium ?? const TextStyle())
+        .copyWith(
+          height: multilineSubtitle ? null : 1,
+          color:
+              enabled
+                  ? theme.colorScheme.onSurface.withAlpha(204) // 80% opacity
+                  : theme.colorScheme.onSurface.withAlpha(102), // 40% opacity
+        );
 
     return Material(
       color: color,
@@ -53,7 +68,10 @@ class RbyListTile extends StatelessWidget {
         borderRadius: borderRadius,
         child: IconTheme(
           data: theme.iconTheme.copyWith(
-            color: enabled ? onBackground : onBackground.withAlpha(128),
+            color:
+                enabled
+                    ? theme.colorScheme.onSurface
+                    : theme.colorScheme.onSurface.withAlpha(128),
           ),
           child: Row(
             crossAxisAlignment: verticalAlignment,
@@ -74,12 +92,7 @@ class RbyListTile extends StatelessWidget {
                           DefaultTextStyle(
                             maxLines: multilineTitle ? 3 : 1,
                             overflow: TextOverflow.ellipsis,
-                            style: textStyle.copyWith(
-                              height: multilineTitle ? null : 1,
-                              color: onBackground.withAlpha(
-                                enabled ? onBackground.a.toInt() : 128,
-                              ),
-                            ),
+                            style: titleStyle,
                             child: title!,
                           ),
                         if (title != null && subtitle != null)
@@ -87,17 +100,11 @@ class RbyListTile extends StatelessWidget {
                         if (subtitle != null)
                           DefaultTextStyle(
                             maxLines: multilineSubtitle ? null : 1,
-                            overflow: multilineSubtitle
-                                ? TextOverflow.clip
-                                : TextOverflow.ellipsis,
-                            style: textStyle
-                                .copyWith(
-                                  height: multilineSubtitle ? null : 1,
-                                  color: onBackground.withAlpha(
-                                    enabled ? 204 : 102,
-                                  ),
-                                )
-                                .apply(fontSizeDelta: -2),
+                            overflow:
+                                multilineSubtitle
+                                    ? TextOverflow.clip
+                                    : TextOverflow.ellipsis,
+                            style: subtitleStyle,
                             child: subtitle!,
                           ),
                       ],

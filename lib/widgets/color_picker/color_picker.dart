@@ -32,15 +32,10 @@ class _ColorPickerState extends State<ColorPicker> {
   late HSVColor _currentHsvColor = HSVColor.fromColor(widget.initialColor);
 
   Widget _colorPickerSlider(TrackType trackType) {
-    return ColorPickerSlider(
-      trackType,
-      _currentHsvColor,
-      (color) {
-        setState(() => _currentHsvColor = color);
-        widget.onColorChanged(_currentHsvColor.toColor());
-      },
-      displayThumbColor: true,
-    );
+    return ColorPickerSlider(trackType, _currentHsvColor, (color) {
+      setState(() => _currentHsvColor = color);
+      widget.onColorChanged(_currentHsvColor.toColor());
+    }, displayThumbColor: true);
   }
 
   void _onColorChanging(HSVColor color) {
@@ -95,104 +90,93 @@ class _ColorPickerState extends State<ColorPicker> {
       enableAlpha: widget.enableAlpha,
       padding: EdgeInsets.all(widget.contentPadding / 2),
       onColorChanged: (color) {
-        setState(
-          () => _currentHsvColor = HSVColor.fromColor(color),
-        );
+        setState(() => _currentHsvColor = HSVColor.fromColor(color));
         widget.onColorChanged(_currentHsvColor.toColor());
       },
     );
 
     return mediaQuery.orientation == Orientation.portrait
         ? Column(
-            children: [
-              colorPicker,
-              SizedBox(height: widget.contentPadding),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: widget.contentPadding,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ColorIndicator(_currentHsvColor),
-                    SizedBox(width: widget.contentPadding),
-                    Expanded(
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: 40,
-                            child: _sliderByPaletteType(),
-                          ),
-                          if (widget.enableAlpha)
-                            SizedBox(
-                              height: 40,
-                              child: _colorPickerSlider(TrackType.alpha),
-                            ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: widget.contentPadding),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: widget.contentPadding,
-                ),
-                child: input,
-              ),
-              SizedBox(height: widget.contentPadding),
-            ],
-          )
-        : Column(
-            children: [
-              Row(
+          children: [
+            colorPicker,
+            SizedBox(height: widget.contentPadding),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: widget.contentPadding),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  colorPicker,
+                  ColorIndicator(_currentHsvColor),
+                  SizedBox(width: widget.contentPadding),
                   Expanded(
                     child: Column(
                       children: [
-                        SizedBox(height: widget.contentPadding),
-                        Row(
-                          children: [
-                            SizedBox(width: widget.contentPadding),
-                            ColorIndicator(_currentHsvColor),
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 40,
-                                    child: _sliderByPaletteType(),
-                                  ),
-                                  if (widget.enableAlpha)
-                                    SizedBox(
-                                      height: 40,
-                                      child: _colorPickerSlider(
-                                        TrackType.alpha,
-                                      ),
-                                    ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(width: widget.contentPadding),
-                          ],
-                        ),
-                        SizedBox(height: widget.contentPadding),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: widget.contentPadding,
+                        SizedBox(height: 40, child: _sliderByPaletteType()),
+                        if (widget.enableAlpha)
+                          SizedBox(
+                            height: 40,
+                            child: _colorPickerSlider(TrackType.alpha),
                           ),
-                          child: input,
-                        ),
-                        SizedBox(height: widget.contentPadding),
                       ],
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: widget.contentPadding),
-            ],
-          );
+            ),
+            SizedBox(height: widget.contentPadding),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: widget.contentPadding),
+              child: input,
+            ),
+            SizedBox(height: widget.contentPadding),
+          ],
+        )
+        : Column(
+          children: [
+            Row(
+              children: [
+                colorPicker,
+                Expanded(
+                  child: Column(
+                    children: [
+                      SizedBox(height: widget.contentPadding),
+                      Row(
+                        children: [
+                          SizedBox(width: widget.contentPadding),
+                          ColorIndicator(_currentHsvColor),
+                          Expanded(
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 40,
+                                  child: _sliderByPaletteType(),
+                                ),
+                                if (widget.enableAlpha)
+                                  SizedBox(
+                                    height: 40,
+                                    child: _colorPickerSlider(TrackType.alpha),
+                                  ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(width: widget.contentPadding),
+                        ],
+                      ),
+                      SizedBox(height: widget.contentPadding),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: widget.contentPadding,
+                        ),
+                        child: input,
+                      ),
+                      SizedBox(height: widget.contentPadding),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: widget.contentPadding),
+          ],
+        );
   }
 }
 
@@ -226,7 +210,8 @@ class _ColorPickerInputState extends State<_ColorPickerInput> {
 
   @override
   Widget build(BuildContext context) {
-    final colorValue = widget.color.r.toInt() << 24 |
+    final colorValue =
+        widget.color.r.toInt() << 24 |
         widget.color.g.toInt() << 16 |
         widget.color.b.toInt() << 8 |
         widget.color.a.toInt();
@@ -250,13 +235,15 @@ class _ColorPickerInputState extends State<_ColorPickerInput> {
       onChanged: (value) {
         var input = value;
         if (value.length == 9) {
-          input = value.split('').getRange(7, 9).join() +
+          input =
+              value.split('').getRange(7, 9).join() +
               value.split('').getRange(1, 7).join();
         }
         final color = colorFromHex(input);
         if (color != null) {
           widget.onColorChanged(color);
-          _inputColor = color.r.toInt() << 24 |
+          _inputColor =
+              color.r.toInt() << 24 |
               color.g.toInt() << 16 |
               color.b.toInt() << 8 |
               color.a.toInt();
@@ -266,13 +253,11 @@ class _ColorPickerInputState extends State<_ColorPickerInput> {
   }
 }
 
-String _colorToHex(
-  Color color, {
-  bool enableAlpha = true,
-}) {
-  final alpha = enableAlpha
-      ? color.a.toInt().toRadixString(16).toLowerCase().padLeft(2, '0')
-      : '';
+String _colorToHex(Color color, {bool enableAlpha = true}) {
+  final alpha =
+      enableAlpha
+          ? color.a.toInt().toRadixString(16).toLowerCase().padLeft(2, '0')
+          : '';
 
   return '#'
       '${color.r.toInt().toRadixString(16).toLowerCase().padLeft(2, '0')}'
@@ -286,11 +271,10 @@ class LowerCaseTextFormatter extends TextInputFormatter {
   TextEditingValue formatEditUpdate(
     TextEditingValue oldValue,
     TextEditingValue newValue,
-  ) =>
-      TextEditingValue(
-        text: newValue.text.toLowerCase(),
-        selection: newValue.selection,
-      );
+  ) => TextEditingValue(
+    text: newValue.text.toLowerCase(),
+    selection: newValue.selection,
+  );
 }
 
 /// Matches a string that can form a valid hex color string.

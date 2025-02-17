@@ -23,7 +23,10 @@ abstract class ImmediateImplicitAnimation<T> extends StatefulWidget {
 }
 
 abstract class ImmediateImplictAnimationState<
-    T extends ImmediateImplicitAnimation<S>, S> extends State<T> {
+  T extends ImmediateImplicitAnimation<S>,
+  S
+>
+    extends State<T> {
   late Widget _child;
 
   /// Builds the [ImplicitlyAnimatedWidget].

@@ -1,15 +1,13 @@
 import 'package:flutter/widgets.dart';
 
-enum PointerState {
-  pressed,
-  hovering,
-}
+enum PointerState { pressed, hovering }
 
-typedef PointerStateBuilder = Widget Function(
-  BuildContext context,
-  Widget? child,
-  Set<PointerState> states,
-);
+typedef PointerStateBuilder =
+    Widget Function(
+      BuildContext context,
+      Widget? child,
+      Set<PointerState> states,
+    );
 
 class PointerBuilder extends StatefulWidget {
   const PointerBuilder({

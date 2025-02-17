@@ -15,11 +15,11 @@ class RadiusScheme extends ThemeExtension<RadiusScheme> {
   });
 
   const RadiusScheme.fallback()
-      : tiny = const Radius.circular(2),
-        small = const Radius.circular(4),
-        medium = const Radius.circular(8),
-        large = const Radius.circular(12),
-        huge = const Radius.circular(16);
+    : tiny = const Radius.circular(2),
+      small = const Radius.circular(4),
+      medium = const Radius.circular(8),
+      large = const Radius.circular(12),
+      huge = const Radius.circular(16);
 
   final Radius tiny;
   final Radius small;
@@ -45,10 +45,7 @@ class RadiusScheme extends ThemeExtension<RadiusScheme> {
   }
 
   @override
-  ThemeExtension<RadiusScheme> lerp(
-    covariant RadiusScheme? other,
-    double t,
-  ) {
+  ThemeExtension<RadiusScheme> lerp(covariant RadiusScheme? other, double t) {
     return RadiusScheme(
       tiny: Radius.lerp(tiny, other?.tiny ?? tiny, t)!,
       small: Radius.lerp(small, other?.small ?? small, t)!,

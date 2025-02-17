@@ -14,9 +14,10 @@ class SliverSeparatedBuilderDelegate extends SliverChildBuilderDelegate {
     super.semanticIndexCallback = _defaultSemanticIndexCallback,
     super.semanticIndexOffset,
   }) : super(
-          (context, index) => index.isEven
-              ? builder(context, index ~/ 2)
-              : separator(context, index ~/ 2),
-          childCount: childCount * 2 - 1,
-        );
+         (context, index) =>
+             index.isEven
+                 ? builder(context, index ~/ 2)
+                 : separator(context, index ~/ 2),
+         childCount: childCount * 2 - 1,
+       );
 }

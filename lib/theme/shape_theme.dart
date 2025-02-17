@@ -5,11 +5,10 @@ class RbyShapeTheme extends ThemeExtension<RbyShapeTheme> {
     required this.radius,
     BorderRadius? borderRadius,
     ShapeBorder? shape,
-  })  : borderRadius = borderRadius ?? BorderRadius.all(radius),
-        shape = shape ??
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(radius),
-            );
+  }) : borderRadius = borderRadius ?? BorderRadius.all(radius),
+       shape =
+           shape ??
+           RoundedRectangleBorder(borderRadius: BorderRadius.all(radius));
 
   final Radius radius;
   final BorderRadius borderRadius;

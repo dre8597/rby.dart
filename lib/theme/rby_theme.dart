@@ -90,11 +90,7 @@ class RbyTheme {
           borderRadius: BorderRadius.all(radiusScheme.large),
         ),
       ),
-      extensions: [
-        spacingScheme,
-        radiusScheme,
-        this.toolbarTheme,
-      ],
+      extensions: [spacingScheme, radiusScheme, this.toolbarTheme],
     );
   }
 

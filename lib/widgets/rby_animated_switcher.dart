@@ -18,8 +18,8 @@ class RbyAnimatedSwitcher extends StatelessWidget {
     required this.child,
     this.duration,
     this.reverseDuration,
-  })  : transitionBuilder = SliverAnimatedSwitcher.defaultTransitionBuilder,
-        layoutBuilder = SliverAnimatedSwitcher.defaultLayoutBuilder;
+  }) : transitionBuilder = SliverAnimatedSwitcher.defaultTransitionBuilder,
+       layoutBuilder = SliverAnimatedSwitcher.defaultLayoutBuilder;
 
   final Widget child;
 

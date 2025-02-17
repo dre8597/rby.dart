@@ -42,10 +42,7 @@ Future<T?> showRbyMenu<T>({
 }
 
 class _PopupMenu<T> extends StatelessWidget {
-  const _PopupMenu({
-    required this.route,
-    required this.semanticLabel,
-  });
+  const _PopupMenu({required this.route, required this.semanticLabel});
 
   final _PopupMenuRoute<T> route;
   final String? semanticLabel;
@@ -68,10 +65,7 @@ class _PopupMenu<T> extends StatelessWidget {
 
       if (route.initialValue != null &&
           route.items[i].represents(route.initialValue)) {
-        item = ColoredBox(
-          color: Theme.of(context).highlightColor,
-          child: item,
-        );
+        item = ColoredBox(color: Theme.of(context).highlightColor, child: item);
       }
 
       children.add(
@@ -79,10 +73,7 @@ class _PopupMenu<T> extends StatelessWidget {
           onLayout: (size) {
             route.itemSizes[i] = size;
           },
-          child: FadeTransition(
-            opacity: opacity,
-            child: item,
-          ),
+          child: FadeTransition(opacity: opacity, child: item),
         ),
       );
     }
@@ -103,31 +94,30 @@ class _PopupMenu<T> extends StatelessWidget {
           namesRoute: true,
           explicitChildNodes: true,
           label: semanticLabel,
-          child: SingleChildScrollView(
-            child: ListBody(children: children),
-          ),
+          child: SingleChildScrollView(child: ListBody(children: children)),
         ),
       ),
     );
 
     return AnimatedBuilder(
       animation: route.animation!,
-      builder: (context, child) => FadeTransition(
-        opacity: opacity.animate(route.animation!),
-        child: Material(
-          shape: route.shape ?? popupMenuTheme.shape,
-          color: route.color ?? popupMenuTheme.color,
-          type: MaterialType.card,
-          elevation: route.elevation ?? popupMenuTheme.elevation ?? 8.0,
-          clipBehavior: Clip.antiAlias,
-          child: Align(
-            alignment: AlignmentDirectional.topEnd,
-            widthFactor: width.evaluate(route.animation!),
-            heightFactor: height.evaluate(route.animation!),
-            child: child,
+      builder:
+          (context, child) => FadeTransition(
+            opacity: opacity.animate(route.animation!),
+            child: Material(
+              shape: route.shape ?? popupMenuTheme.shape,
+              color: route.color ?? popupMenuTheme.color,
+              type: MaterialType.card,
+              elevation: route.elevation ?? popupMenuTheme.elevation ?? 8.0,
+              clipBehavior: Clip.antiAlias,
+              child: Align(
+                alignment: AlignmentDirectional.topEnd,
+                widthFactor: width.evaluate(route.animation!),
+                heightFactor: height.evaluate(route.animation!),
+                child: child,
+              ),
+            ),
           ),
-        ),
-      ),
       child: child,
     );
   }
@@ -154,9 +144,9 @@ class _PopupMenuRouteLayout extends SingleChildLayoutDelegate {
 
   @override
   BoxConstraints getConstraintsForChild(BoxConstraints constraints) {
-    return BoxConstraints.loose(constraints.biggest).deflate(
-      const EdgeInsets.all(_kMenuScreenPadding) + padding,
-    );
+    return BoxConstraints.loose(
+      constraints.biggest,
+    ).deflate(const EdgeInsets.all(_kMenuScreenPadding) + padding);
   }
 
   @override
@@ -270,9 +260,11 @@ class _PopupMenuRoute<T> extends PopupRoute<T> {
     int? selectedItemIndex;
 
     if (initialValue != null) {
-      for (var index = 0;
-          selectedItemIndex == null && index < items.length;
-          index += 1) {
+      for (
+        var index = 0;
+        selectedItemIndex == null && index < items.length;
+        index += 1
+      ) {
         if (items[index].represents(initialValue)) selectedItemIndex = index;
       }
     }
@@ -287,26 +279,24 @@ class _PopupMenuRoute<T> extends PopupRoute<T> {
       removeLeft: true,
       removeRight: true,
       child: Builder(
-        builder: (context) => CustomSingleChildLayout(
-          delegate: _PopupMenuRouteLayout(
-            position,
-            itemSizes,
-            selectedItemIndex,
-            Directionality.of(context),
-            mediaQuery.padding,
-          ),
-          child: capturedThemes.wrap(menu),
-        ),
+        builder:
+            (context) => CustomSingleChildLayout(
+              delegate: _PopupMenuRouteLayout(
+                position,
+                itemSizes,
+                selectedItemIndex,
+                Directionality.of(context),
+                mediaQuery.padding,
+              ),
+              child: capturedThemes.wrap(menu),
+            ),
       ),
     );
   }
 }
 
 class _MenuItem extends SingleChildRenderObjectWidget {
-  const _MenuItem({
-    required this.onLayout,
-    required super.child,
-  });
+  const _MenuItem({required this.onLayout, required super.child});
 
   final ValueChanged<Size> onLayout;
 

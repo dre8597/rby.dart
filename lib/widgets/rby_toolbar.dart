@@ -148,10 +148,11 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
           middleSpacing: toolbarTheme.middleSpacing,
           buttonStyle: toolbarTheme.buttonStyle,
           automaticallyImplyLeading: toolbarTheme.automaticallyImplyLeading,
-          decoration: _isOverscrolled(shrinkOffset, overlapsContent)
-              ? toolbarTheme.sliverOverscrollDecoration ??
-                  toolbarTheme.sliverDecoration
-              : toolbarTheme.sliverDecoration,
+          decoration:
+              _isOverscrolled(shrinkOffset, overlapsContent)
+                  ? toolbarTheme.sliverOverscrollDecoration ??
+                      toolbarTheme.sliverDecoration
+                  : toolbarTheme.sliverDecoration,
         ),
       ],
     );
@@ -189,10 +190,7 @@ class _InternalRbyToolbar extends StatelessWidget {
     final child = leading ?? _implyLeading(context);
     if (child == null) return null;
 
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [child],
-    );
+    return Row(mainAxisSize: MainAxisSize.min, children: [child]);
   }
 
   Widget? _trailing() {
@@ -237,14 +235,15 @@ class _InternalRbyToolbar extends StatelessWidget {
           ),
           child: NavigationToolbar(
             leading: _leading(context),
-            middle: title != null
-                ? DefaultTextStyle(
-                    style: theme.textTheme.titleMedium!,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    child: title!,
-                  )
-                : null,
+            middle:
+                title != null
+                    ? DefaultTextStyle(
+                      style: theme.textTheme.titleMedium!,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      child: title!,
+                    )
+                    : null,
             trailing: _trailing(),
             middleSpacing: middleSpacing,
           ),

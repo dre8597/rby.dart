@@ -44,9 +44,7 @@ abstract class VerticalSpacer {
 }
 
 class _Spacer extends StatelessWidget {
-  const _Spacer({
-    required this.axis,
-  });
+  const _Spacer({required this.axis});
 
   final Axis axis;
 
@@ -62,9 +60,7 @@ class _Spacer extends StatelessWidget {
 }
 
 class _SmallSpacer extends StatelessWidget {
-  const _SmallSpacer({
-    required this.axis,
-  });
+  const _SmallSpacer({required this.axis});
 
   final Axis axis;
 
@@ -80,9 +76,7 @@ class _SmallSpacer extends StatelessWidget {
 }
 
 class _LargeSpacer extends StatelessWidget {
-  const _LargeSpacer({
-    required this.axis,
-  });
+  const _LargeSpacer({required this.axis});
 
   final Axis axis;
 

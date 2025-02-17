@@ -30,22 +30,24 @@ class RbySwitchTile extends StatelessWidget {
       trailingPadding: EdgeInsets.zero,
       trailing: Switch(
         value: value,
-        onChanged: onChanged != null
-            ? (_) {
-                HapticFeedback.lightImpact();
-                onChanged?.call(!value);
-              }
-            : null,
+        onChanged:
+            onChanged != null
+                ? (_) {
+                  HapticFeedback.lightImpact();
+                  onChanged?.call(!value);
+                }
+                : null,
       ),
       borderRadius: borderRadius,
       enabled: onChanged != null,
       multilineTitle: true,
-      onTap: onChanged != null
-          ? () {
-              HapticFeedback.lightImpact();
-              onChanged?.call(!value);
-            }
-          : null,
+      onTap:
+          onChanged != null
+              ? () {
+                HapticFeedback.lightImpact();
+                onChanged?.call(!value);
+              }
+              : null,
     );
   }
 }

@@ -34,7 +34,8 @@ class RbyDialog extends StatelessWidget {
     if (title != null) {
       titleWidget = Center(
         child: Padding(
-          padding: titlePadding ??
+          padding:
+              titlePadding ??
               EdgeInsets.only(
                 top: theme.spacingScheme.xl,
                 left: theme.spacingScheme.xl,
@@ -88,10 +89,7 @@ class RbyDialog extends StatelessWidget {
 
 /// Displays a list of [actions] (usually buttons) in an [OverflowBar].
 class RbyDialogActionBar extends StatelessWidget {
-  const RbyDialogActionBar({
-    required this.actions,
-    this.padding,
-  });
+  const RbyDialogActionBar({required this.actions, this.padding});
 
   final List<Widget> actions;
   final EdgeInsetsGeometry? padding;

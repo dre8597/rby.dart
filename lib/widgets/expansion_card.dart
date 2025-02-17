@@ -67,9 +67,10 @@ class _ExpansionCardState extends State<ExpansionCard> {
             firstCurve: Curves.easeOut,
             secondCurve: Curves.easeOut,
             sizeCurve: Curves.easeOutCubic,
-            crossFadeState: _collapsed
-                ? CrossFadeState.showSecond
-                : CrossFadeState.showFirst,
+            crossFadeState:
+                _collapsed
+                    ? CrossFadeState.showSecond
+                    : CrossFadeState.showFirst,
             firstChild: AnimatedScale(
               duration: theme.animation.short,
               scale: _collapsed ? .95 : 1,

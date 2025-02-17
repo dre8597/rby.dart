@@ -17,8 +17,6 @@ class BasicScrollBehavior extends ScrollBehavior {
 
   @override
   ScrollPhysics getScrollPhysics(BuildContext context) {
-    return const ClampingScrollPhysics(
-      parent: RangeMaintainingScrollPhysics(),
-    );
+    return const ClampingScrollPhysics(parent: RangeMaintainingScrollPhysics());
   }
 }

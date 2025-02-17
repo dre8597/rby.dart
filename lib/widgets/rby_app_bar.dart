@@ -38,12 +38,13 @@ class RbyAppBar extends StatelessWidget {
           padding: EdgeInsetsDirectional.only(top: mediaQuery.padding.top),
           child: NavigationToolbar(
             leading: _leading(context, leading: leading),
-            middle: title != null
-                ? DefaultTextStyle(
-                    style: style,
-                    child: fittedTitle ? FittedBox(child: title) : title!,
-                  )
-                : null,
+            middle:
+                title != null
+                    ? DefaultTextStyle(
+                      style: style,
+                      child: fittedTitle ? FittedBox(child: title) : title!,
+                    )
+                    : null,
             trailing: _trailing(context, actions: actions),
             middleSpacing: theme.spacing.base / 2,
           ),
@@ -90,7 +91,8 @@ class RbySliverAppBar extends StatelessWidget {
         title: title,
         leading: leading,
         actions: actions,
-        backgroundDecoration: backgroundDecoration ??
+        backgroundDecoration:
+            backgroundDecoration ??
             BoxDecoration(color: theme.colorScheme.surface.withAlpha(204)),
         topPadding: mediaQuery.padding.top,
         paddingValue: theme.spacing.base,
@@ -155,12 +157,13 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
           padding: EdgeInsetsDirectional.only(top: topPadding),
           child: NavigationToolbar(
             leading: _leading(context, leading: leading),
-            middle: title != null
-                ? DefaultTextStyle(
-                    style: titleStyle,
-                    child: fittedTitle ? FittedBox(child: title) : title!,
-                  )
-                : null,
+            middle:
+                title != null
+                    ? DefaultTextStyle(
+                      style: titleStyle,
+                      child: fittedTitle ? FittedBox(child: title) : title!,
+                    )
+                    : null,
             trailing: _trailing(context, actions: actions),
             middleSpacing: paddingValue / 2,
           ),
@@ -170,10 +173,7 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
   }
 }
 
-Widget? _leading(
-  BuildContext context, {
-  required Widget? leading,
-}) {
+Widget? _leading(BuildContext context, {required Widget? leading}) {
   final theme = Theme.of(context);
   final route = ModalRoute.of(context);
 
@@ -202,10 +202,7 @@ Widget? _leading(
   return null;
 }
 
-Widget? _trailing(
-  BuildContext context, {
-  required List<Widget>? actions,
-}) {
+Widget? _trailing(BuildContext context, {required List<Widget>? actions}) {
   final theme = Theme.of(context);
 
   Widget? child;

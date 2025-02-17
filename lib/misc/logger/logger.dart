@@ -25,10 +25,7 @@ void initializeLogger({String? prefix}) {
     final content = [
       DateFormat('HH:mm:s.S').format(DateTime.now()),
       separator,
-      if (prefix != null) ...[
-        prefix,
-        separator,
-      ],
+      if (prefix != null) ...[prefix, separator],
       rec.level.name.padRight(7),
       separator,
       if (rec.loggerName.isNotEmpty) ...[

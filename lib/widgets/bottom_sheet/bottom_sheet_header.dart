@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rby/rby.dart';
 
 class BottomSheetHeader extends StatelessWidget {
-  const BottomSheetHeader({
-    super.key,
-    required this.child,
-  });
+  const BottomSheetHeader({super.key, required this.child});
 
   final Widget child;
 

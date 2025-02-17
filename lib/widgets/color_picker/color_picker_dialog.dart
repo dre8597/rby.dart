@@ -30,19 +30,21 @@ class _ColorPickerDialogState extends State<ColorPickerDialog> {
       clipBehavior: Clip.antiAlias,
       content: SingleChildScrollView(
         child: LayoutBuilder(
-          builder: (_, constraints) => ColorPicker(
-            initialColor: widget.color,
-            contentPadding: theme.spacing.base,
-            enableAlpha: widget.enableAlpha,
-            pickerAreaBorderRadius: theme.shape.borderRadius,
-            colorPickerWidth: mediaQuery.orientation == Orientation.portrait
-                ? constraints.maxWidth
-                : 200,
-            onColorChanged: (color) {
-              _color = color;
-              widget.onColorChanged?.call(color);
-            },
-          ),
+          builder:
+              (_, constraints) => ColorPicker(
+                initialColor: widget.color,
+                contentPadding: theme.spacing.base,
+                enableAlpha: widget.enableAlpha,
+                pickerAreaBorderRadius: theme.shape.borderRadius,
+                colorPickerWidth:
+                    mediaQuery.orientation == Orientation.portrait
+                        ? constraints.maxWidth
+                        : 200,
+                onColorChanged: (color) {
+                  _color = color;
+                  widget.onColorChanged?.call(color);
+                },
+              ),
         ),
       ),
       actions: [

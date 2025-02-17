@@ -186,15 +186,14 @@ class _RbyTransparentButton extends RbyButton {
     final style = ButtonStyle(
       backgroundColor: WidgetStateProperty.all(Colors.transparent),
       foregroundColor: WidgetStateProperty.resolveWith(
-        (states) => states.contains(WidgetState.disabled)
-            ? theme.colorScheme.onSurface.withAlpha(128)
-            : theme.colorScheme.onSurface,
+        (states) =>
+            states.contains(WidgetState.disabled)
+                ? theme.colorScheme.onSurface.withAlpha(128)
+                : theme.colorScheme.onSurface,
       ),
       overlayColor: WidgetStateProperty.all(theme.highlightColor),
       elevation: WidgetStateProperty.all(0),
-      padding: WidgetStateProperty.all(
-        padding ?? theme.spacing.edgeInsets,
-      ),
+      padding: WidgetStateProperty.all(padding ?? theme.spacing.edgeInsets),
     );
 
     return TextButton(
@@ -241,20 +240,20 @@ class _RbyCardButton extends RbyButton {
 
     final style = ButtonStyle(
       backgroundColor: WidgetStateProperty.resolveWith(
-        (states) => states.contains(WidgetState.disabled)
-            ? background.withAlpha(0)
-            : background,
+        (states) =>
+            states.contains(WidgetState.disabled)
+                ? background.withAlpha(0)
+                : background,
       ),
       foregroundColor: WidgetStateProperty.resolveWith(
-        (states) => states.contains(WidgetState.disabled)
-            ? foreground.withAlpha(128)
-            : foreground,
+        (states) =>
+            states.contains(WidgetState.disabled)
+                ? foreground.withAlpha(128)
+                : foreground,
       ),
       overlayColor: WidgetStateProperty.all(theme.highlightColor),
       elevation: WidgetStateProperty.all(theme.cardTheme.elevation),
-      padding: WidgetStateProperty.all(
-        padding ?? theme.spacing.edgeInsets,
-      ),
+      padding: WidgetStateProperty.all(padding ?? theme.spacing.edgeInsets),
     );
 
     return ElevatedButton(
